@@ -21,6 +21,9 @@ const connection = mysql.createConnection({
 app.get('/signup', function(req, res){
     res.sendFile(path.resolve(__dirname, 'signup.html'))
 });
+app.get('/', function(req, res){
+    res.sendFile(path.resolve(__dirname, 'index.html'))
+});
 
 app.post('/', function(req, res){
     
@@ -40,9 +43,9 @@ connection.connect ((err)=>{
 
     console.log('connected to mysql');
 });
-
-const server = app.listen(process.env.PORT || 8081, () => {
-    console.log('Server is started')
+let port = process.env.PORT || 8081
+app.listen(port, () => {
+    console.log('Server is started on',port)
 });
 
 
